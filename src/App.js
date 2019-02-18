@@ -4,8 +4,8 @@ import Checkbox from './components/Checkbox/Checkbox';
 import Button from './components/Button/Button';
 import Input from './components/Input/Input';
 
-
 let id = 0;
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -13,7 +13,7 @@ class App extends Component {
       items: [],
       addNew: false,
       newText: "",
-    }
+    };
   }
 
   addItem = () => {
@@ -89,9 +89,10 @@ class App extends Component {
     const {items, addNew, newText} = this.state;
     return (
       <div className="App">
-          <div className="App-header">
-            Todo List
-          </div>
+          <h1 className="App-header">
+            Todo List &nbsp;&nbsp;
+            <span style={{fontSize: 12}}>by AnneBai</span>
+          </h1>
           <ol>
             {items.map((o) => {
               return (
@@ -115,12 +116,16 @@ class App extends Component {
           </ol>
           <div>
             <Button type="normal" onClick={this.addItem}>+</Button>
-            <Button type="error" onClick={this.handleClear}>clear</Button>
+            <Button
+              type="error"
+              onClick={this.handleClear}
+              disabled={items.length === 0}
+            >clear</Button>
           </div>
           {
             addNew && (
               <div>
-                <Input value={newText} onChange={this.handleChangeText} handleConfirm={this.handleOk}/>
+                <Input autoFocus value={newText} onChange={this.handleChangeText} handleConfirm={this.handleOk}/>
                 <Button type="info" onClick={this.handleOk}>&radic;</Button>
               </div>
             )

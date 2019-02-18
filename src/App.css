@@ -7,10 +7,10 @@ body {
   width: 600px;
   display: flex;
   flex-direction: column;
-  border: 2px dotted gray;
+  border: 2px solid lightgray;
+  border-radius: 15px;
 }
 .App-header {
-  font-size: calc(20px + 2vmin);
   color: darkgray;
 }
 
