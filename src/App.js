@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
+import Checkbox from './components/Checkbox/Checkbox';
+import Button from './components/Button/Button';
+import Input from './components/Input/Input';
 
 
 let id = 0;
@@ -70,6 +73,10 @@ class App extends Component {
   };
 
   handleClear = () => {
+    const {items} = this.state;
+    if (items.length === 0) {
+      return false;
+    }
     const isClear = window.confirm("Are you sure to clear all the items ?");
     if (isClear) {
       return this.setState({
@@ -89,34 +96,32 @@ class App extends Component {
             {items.map((o) => {
               return (
                 <li className="todo-item" key={o.id}>
-                  <input
-                    className="checkbox"
-                    type="checkbox"
-                    value={o.finished}
+                  <Checkbox
+                    checked={o.finished}
                     onClick={(e) => {
-                      this.handleChangeFinished(o.id, e.target.checked);
+                      this.handleChangeFinished(o.id, !o.finished);
                     }}
                   />
                   <div className={o.finished ? "text finished" : "text"}>{o.text}</div>
-                  <button
-                    className="btn delete"
+                  <Button
+                    type="warn"
                     onClick={() => {
                       this.deleteItem(o.id)
                     }}
-                  >&times;</button>
+                  >&times;</Button>
                 </li>
               );
             })}
           </ol>
           <div>
-            <button className="btn add" onClick={this.addItem}>+</button>
-            <button className="btn clear" onClick={this.handleClear}>clear</button>
+            <Button type="normal" onClick={this.addItem}>+</Button>
+            <Button type="error" onClick={this.handleClear}>clear</Button>
           </div>
           {
             addNew && (
               <div>
-                <input className="input" type="text" id="itemText" value={newText} onChange={this.handleChangeText}/>
-                <button className="btn ok" onClick={this.handleOk}>&radic;</button>
+                <Input value={newText} onChange={this.handleChangeText} handleConfirm={this.handleOk}/>
+                <Button type="info" onClick={this.handleOk}>&radic;</Button>
               </div>
             )
           }

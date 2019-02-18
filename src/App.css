@@ -28,11 +28,7 @@ body {
 
 .finished {
   text-decoration: line-through;
-  color: gray;
-}
-.checkbox {
-  flex: none;
-  margin-top: 8px;
+  color: lightgray;
 }
 .input {
   padding: 4px;
@@ -43,28 +39,4 @@ body {
 .text {
   flex: 1;
   margin: 4px;
-}
-.btn {
-  flex: none;
-  align-self: right;
-  padding: 0 6px;
-  margin: 4px;
-  font-size: 18px;
-  border: 1px solid currentColor;
-  border-radius: 4px;
-  color: #fff;
-  cursor: pointer;
-}
-.delete {
-  background: #ca6545;
-}
-.add {
-  background: #4588ca;
-  width: 40px;
-}
-.ok{
-  background: #88ca45;
-}
-.clear {
-  background: #ca4545;
 }
